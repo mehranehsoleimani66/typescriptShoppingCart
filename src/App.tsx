@@ -5,6 +5,7 @@ import About from "./pages/About";
 import { Container } from "react-bootstrap";
 import Navbar from "./components/Navbar";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+
 const App = () => {
   return (
     <ShoppingCartProvider>
