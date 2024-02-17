@@ -27,12 +27,13 @@ export function useShoppingCart() {
 }
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
+  const [cartIsOpen, setCartIsOpen] = useState(false);
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
     0
   );
-
+  const openCart = () => setCartIsOpen(cartIsOpen);
+  const closeCart = () => setCartIsOpen(cartIsOpen);
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
@@ -80,7 +81,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         decreaseCartQuantity,
         removeFromCart,
         cartQuantity,
-        cartItems
+        cartItems,
+        openCart,
+        closeCart
       }}
     >
       {children}
